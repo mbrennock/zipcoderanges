@@ -7,7 +7,7 @@ import java.util.List;
 
 import static ZipCodeProcessor.ZipCodeRangeSet.mergeRows;
 
-public class ZipCodeProcessor {
+class ZipCodeProcessor {
 
     public static void main(String[] args){
 

@@ -8,7 +8,7 @@ import java.util.*;
 
 public class CSVReader {
 
-    private String filename;
+    private final String filename;
 
     public CSVReader(String filename) {
         this.filename = filename;
@@ -29,7 +29,6 @@ public class CSVReader {
                 result.add(new ZipCodeRange(Integer.valueOf(zipCodes[0]), Integer.valueOf(zipCodes[1])));
             }
         }
-        //ToDo: clean up this exception-handling code
         catch (FileNotFoundException e) {
             System.out.println("Error: unable to open file");
         }

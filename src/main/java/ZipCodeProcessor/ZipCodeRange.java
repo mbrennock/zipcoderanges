@@ -2,11 +2,8 @@ package ZipCodeProcessor;
 
 public class ZipCodeRange implements Comparable<ZipCodeRange> {
 
-    private Integer lowerRange;
-    private Integer upperRange;
-
-    static Integer MIN_ZIP = 0;
-    static Integer MAX_ZIP = 99999;
+    private final Integer lowerRange;
+    private final Integer upperRange;
 
     public ZipCodeRange(Integer lower, Integer upper) {
         this.lowerRange = lower;
@@ -17,16 +14,8 @@ public class ZipCodeRange implements Comparable<ZipCodeRange> {
         return lowerRange;
     }
 
-    public void setLowerRange(Integer lowerRange) {
-        this.lowerRange = lowerRange;
-    }
-
     public Integer getUpperRange() {
         return upperRange;
-    }
-
-    public void setUpperRange(Integer upperRange) {
-        this.upperRange = upperRange;
     }
 
     @Override

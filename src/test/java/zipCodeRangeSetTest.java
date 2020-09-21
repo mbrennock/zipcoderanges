@@ -15,7 +15,6 @@ public class zipCodeRangeSetTest {
     public void scenario_0_no_overlap() {
 
         //Setup - use reversed sorted data
-        ZipCodeRangeSet set = new ZipCodeRangeSet();
         List<ZipCodeRange> input = new ArrayList<ZipCodeRange>();
         input.add(new ZipCodeRange(10000, 10100));
         input.add(new ZipCodeRange(10200, 10300));
@@ -25,7 +24,7 @@ public class zipCodeRangeSetTest {
         expected.add(new ZipCodeRange(10200, 10300));
 
         //Execute
-        List<ZipCodeRange> results = set.mergeRows(input);
+        List<ZipCodeRange> results = ZipCodeRangeSet.mergeRows(input);
 
         //Verify - data should be sorted
         assertEquals(expected, results);
@@ -35,7 +34,6 @@ public class zipCodeRangeSetTest {
     public void scenario_1_combine_overlap() {
 
         //Setup - use reversed sorted data
-        ZipCodeRangeSet set = new ZipCodeRangeSet();
         List<ZipCodeRange> input = new ArrayList<ZipCodeRange>();
         input.add(new ZipCodeRange(12000, 12030));
         input.add(new ZipCodeRange(12015, 12045));
@@ -44,7 +42,7 @@ public class zipCodeRangeSetTest {
         expected.add(new ZipCodeRange(12000, 12045));
 
         //Execute
-        List<ZipCodeRange> results = set.mergeRows(input);
+        List<ZipCodeRange> results = ZipCodeRangeSet.mergeRows(input);
 
         //Verify - data should be sorted
         assertEquals(expected, results);
@@ -55,7 +53,6 @@ public class zipCodeRangeSetTest {
     public void scenario_2_retain_first() {
 
         //Setup - use reversed sorted data
-        ZipCodeRangeSet set = new ZipCodeRangeSet();
         List<ZipCodeRange> input = new ArrayList<ZipCodeRange>();
         input.add(new ZipCodeRange(10000, 10150));
         input.add(new ZipCodeRange(10001, 10100));
@@ -64,7 +61,7 @@ public class zipCodeRangeSetTest {
         expected.add(new ZipCodeRange(10000, 10150));
 
         //Execute
-        List<ZipCodeRange> results = set.mergeRows(input);
+        List<ZipCodeRange> results = ZipCodeRangeSet.mergeRows(input);
 
         //Verify - data should be sorted
         assertEquals(expected, results);
@@ -74,7 +71,6 @@ public class zipCodeRangeSetTest {
     public void scenario_3_composite_input() {
 
         //Setup - use reversed sorted data
-        ZipCodeRangeSet set = new ZipCodeRangeSet();
         List<ZipCodeRange> input = new ArrayList<ZipCodeRange>();
         input.add(new ZipCodeRange(10000, 10150));
         input.add(new ZipCodeRange(10001, 10100));
@@ -84,7 +80,7 @@ public class zipCodeRangeSetTest {
         expected.add(new ZipCodeRange(10000, 10175));
 
         //Execute
-        List<ZipCodeRange> results = set.mergeRows(input);
+        List<ZipCodeRange> results = ZipCodeRangeSet.mergeRows(input);
 
         //Verify - data should be sorted
         assertEquals(expected, results);
@@ -96,7 +92,6 @@ public class zipCodeRangeSetTest {
     public void scenario_4_edge_case() {
 
         //Setup - use reversed sorted data
-        ZipCodeRangeSet set = new ZipCodeRangeSet();
         List<ZipCodeRange> input = new ArrayList<ZipCodeRange>();
         input.add(new ZipCodeRange(10000, 10100));
         input.add(new ZipCodeRange(10100, 10200));
@@ -105,7 +100,7 @@ public class zipCodeRangeSetTest {
         expected.add(new ZipCodeRange(10000, 10200));
 
         //Execute
-        List<ZipCodeRange> results = set.mergeRows(input);
+        List<ZipCodeRange> results = ZipCodeRangeSet.mergeRows(input);
 
         //Verify - data should be sorted
         assertEquals(expected, results);
@@ -116,7 +111,6 @@ public class zipCodeRangeSetTest {
 
         //Setup - use reversed sorted data
         CSVReader reader = new CSVReader("src/test/resources/data2.csv");
-        ZipCodeRangeSet set = new ZipCodeRangeSet();
 
         List<ZipCodeRange> expected = new ArrayList<ZipCodeRange>();
         expected.add(new ZipCodeRange(10000, 10175));
@@ -124,7 +118,7 @@ public class zipCodeRangeSetTest {
 
         //Execute
         List<ZipCodeRange> results = reader.readFile();
-        results = set.mergeRows(results);
+        results = ZipCodeRangeSet.mergeRows(results);
 
         //Verify - data should be sorted
         assertEquals(expected, results);
